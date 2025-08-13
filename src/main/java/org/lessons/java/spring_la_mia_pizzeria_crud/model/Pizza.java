@@ -22,12 +22,15 @@ public class Pizza {
     @NotBlank
     private String description;
 
-    @NotNull
+    @NotBlank
     private String photoUrl;
 
     @Min(value = 0)
-    @NotBlank
+    @NotNull
     private Integer price;
+
+    public Pizza() {
+    }
 
     public Pizza(Integer id, String name, String description, String photoUrl, Integer price) {
         this.id = id;
