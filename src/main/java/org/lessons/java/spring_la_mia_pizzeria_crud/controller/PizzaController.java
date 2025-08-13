@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.lessons.java.spring_la_mia_pizzeria_crud.model.Pizza;
 
 @Controller
@@ -21,6 +22,12 @@ public class PizzaController {
         List<Pizza> pizze = repository.findAll();
         model.addAttribute("pizze", pizze);
         return "pizze/index";
+    }
+
+    @GetMapping("/{id}")
+    public String show(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("pizze", repository.findById(id).get());
+        return "pizze/show";
     }
 
 }
