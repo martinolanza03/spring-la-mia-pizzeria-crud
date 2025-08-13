@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pizze List</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+    <h1>Lista delle Pizze</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrizione</th>
+                <th>Prezzo</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="pizza : ${pizze}">
+                <td th:text="${pizza.nome}">Nome</td>
+                <td th:text="${pizza.descrizione}">Descrizione</td>
+                <td th:text="${pizza.prezzo}">Prezzo</td>
+                <td>
+                    <a th:href="@{|/pizze/${pizza.id}|}">Dettagli</a>
+                    <a th:href="@{|/pizze/edit/${pizza.id}|}">Modifica</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
