@@ -1,0 +1,91 @@
+package org.lessons.java.spring_la_mia_pizzeria_crud.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "pizze")
+public class Pizza {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @NotBlank
+    private String name;
+
+    @NotBlank
+    private String description;
+
+    @NotNull
+    private String photoUrl;
+
+    @Min(value = 0)
+    @NotBlank
+    private Integer price;
+
+    public Pizza(Integer id, String name, String description, String photoUrl, Integer price) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.photoUrl = photoUrl;
+        this.price = price;
+    }
+
+    public Integer getId() {
+        return this.id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getPhotoUrl() {
+        return this.photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public Integer getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                " id='" + getId() + "'" +
+                ", name='" + getName() + "'" +
+                ", description='" + getDescription() + "'" +
+                ", photoUrl='" + getPhotoUrl() + "'" +
+                ", price='" + getPrice() + "'" +
+                "}";
+    }
+
+}
