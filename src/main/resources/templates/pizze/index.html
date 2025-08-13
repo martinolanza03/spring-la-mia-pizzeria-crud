@@ -9,26 +9,24 @@
 
 <body>
     <h1>Lista delle Pizze</h1>
-    <table>
+
+    <table th:if="${pizze.size() > 0}">
         <thead>
             <tr>
                 <th>Nome</th>
                 <th>Descrizione</th>
                 <th>Prezzo</th>
-                <th>Azioni</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="pizza : ${pizze}">
-                <td th:text="${pizza.nome}">Nome</td>
-                <td th:text="${pizza.descrizione}">Descrizione</td>
-                <td th:text="${pizza.prezzo}">Prezzo</td>
-                <td>
-                    <a th:href="@{|/pizze/${pizza.id}|}">Dettagli</a>
-                    <a th:href="@{|/pizze/edit/${pizza.id}|}">Modifica</a>
-                </td>
+            <tr th:each="pizza : ${pizze}" th:object="${pizza}">
+                <td>[[*{name}]]</td>
+                <td>[[*{description}]]</td>
+                <td>[[*{price}]] </td>
             </tr>
         </tbody>
+
+        <p th:text="No pizze aviable" th:unless="${pizze.size() > 0}" />
     </table>
 </body>
 
