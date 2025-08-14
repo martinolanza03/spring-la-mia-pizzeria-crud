@@ -30,4 +30,12 @@ public class PizzaController {
         return "pizze/show";
     }
 
+    @GetMapping("/create")
+    public String create(Model model) {
+
+        model.addAttribute("pizza", new Pizza());
+
+        return "pizze/create";
+    }
+
 }
