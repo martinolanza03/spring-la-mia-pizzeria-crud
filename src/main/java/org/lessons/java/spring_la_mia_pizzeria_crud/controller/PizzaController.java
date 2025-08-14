@@ -86,7 +86,7 @@ public class PizzaController {
 
         repository.deleteById(id);
 
-        return "redirect:/pizza";
+        return "redirect:/pizze";
     }
 
 }
