@@ -58,4 +58,13 @@ public class PizzaController {
         return "redirect:/pizze";
     }
 
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable("id") Integer id,
+            Model model) {
+
+        model.addAttribute("pizza", repository.findById(id).get());
+
+        return "pizze/edit";
+    }
+
 }
