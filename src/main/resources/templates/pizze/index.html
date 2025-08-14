@@ -18,7 +18,7 @@
                 <th>Nome</th>
                 <th>Descrizione</th>
                 <th>Prezzo</th>
-                <th>Dettagli Pizza</th>
+                <th>Opzioni Pizza</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +28,7 @@
                 <td>[[*{price}]] </td>
                 <td>
                     <a th:href="@{/pizze/{id}(id=${pizza.id})}">Dettagli</a>
+                    <a th:href="@{/pizze/edit/{id}(id=${pizza.id})}"> Modifica Pizza</a>
                 </td>
             </tr>
         </tbody>
