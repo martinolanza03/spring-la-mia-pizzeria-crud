@@ -16,17 +16,17 @@ public class Pizza {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank
+    @NotBlank(message = "The name must not be null, nor empty or blank")
     private String name;
 
-    @NotBlank
+    @NotBlank(message = "The description must not be null, nor empty or blank")
     private String description;
 
     @NotBlank
     private String photoUrl;
 
-    @Min(value = 0)
-    @NotNull
+    @Min(value = 1)
+    @NotNull(message = "The name must not be null, min value 1")
     private Integer price;
 
     public Pizza() {
