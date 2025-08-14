@@ -13,20 +13,37 @@
         <form th:action="@{/pizze/create}" th:object="${pizza}" method="post" class="mt-4">
             <div class="mb-3">
                 <label for="name" class="form-label">Nome</label>
-                <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Nome pizza" required>
+                <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Nome pizza"
+                    th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+                    <ul>
+                        <li th:each="error: ${#fields.errors('name')}" th:text="${error}"></li>
+                    </ul>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
                 <textarea th:field="*{description}" class="form-control" id="description" rows="3"
-                    placeholder="Descrizione"></textarea>
+                    placeholder="Descrizione" th:errorClass="is-invalid">
+                </textarea>
+                <div th:if="${#fields.hasErrors('description')}" class="invalid-feedback">
+                    <ul>
+                        <li th:each="error: ${#fields.errors('description')}" th:text="${error}"></li>
+                    </ul>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Prezzo</label>
                 <input type="number" step="0.10" th:field="*{price}" class="form-control" id="price"
-                    placeholder="Prezzo" required>
+                    placeholder="Prezzo" th:errorClass="is-invalid" min="1">
+                <div th:if="${#fields.hasErrors('price')}" class="invalid-feedback">
+                    <ul>
+                        <li th:each="error: ${#fields.errors('price')}" th:text="${error}"></li>
+                    </ul>
+                </div>
             </div>
             <div class="mb-3">
-                <label for="imageUrl" class="form-label">URL Immagine</label>
+                <label for="photoUrl" class="form-label">URL Immagine</label>
                 <input type="text" th:field="*{photoUrl}" class="form-control" id="photoUrl" placeholder="URL immagine">
             </div>
             <button type="submit" class="btn btn-primary">Crea</button>
