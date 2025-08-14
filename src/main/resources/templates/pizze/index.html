@@ -9,7 +9,9 @@
 
 <body>
     <h1>Lista delle Pizze</h1>
-
+    <h2>
+        <a th:href="@{/pizze/create}">Crea Pizza</a>
+    </h2>
     <table th:if="${pizze.size() > 0}">
         <thead>
             <tr>
