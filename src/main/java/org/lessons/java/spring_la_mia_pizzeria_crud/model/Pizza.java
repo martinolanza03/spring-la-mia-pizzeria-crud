@@ -22,7 +22,6 @@ public class Pizza {
     @NotBlank(message = "The description must not be null, nor empty or blank")
     private String description;
 
-    @NotBlank
     private String photoUrl;
 
     @Min(value = 1)
