@@ -34,8 +34,8 @@
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Prezzo</label>
-                <input type="number" step="0.10" th:field="*{price}" class="form-control" id="price"
-                    placeholder="Prezzo" th:errorClass="is-invalid" min="1">
+                <input type="number" step="1" th:field="*{price}" class="form-control" id="price" placeholder="Prezzo"
+                    th:errorClass="is-invalid" min="1">
                 <div th:if="${#fields.hasErrors('price')}" class="invalid-feedback">
                     <ul>
                         <li th:each="error: ${#fields.errors('price')}" th:text="${error}"></li>
