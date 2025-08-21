@@ -100,7 +100,7 @@ public class PizzaController {
 
         model.addAttribute("offer", offer);
 
-        return "offer/create";
+        return "offer/create-or-edit";
     }
 
 }
