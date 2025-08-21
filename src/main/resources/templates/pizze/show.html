@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:object="${pizze}">
+            <tr th:object="${pizza}">
                 <td>[[*{name}]]</td>
                 <td>[[*{description}]]</td>
                 <td>[[*{price}]] </td>
@@ -27,6 +27,29 @@
         </tbody>
 
     </table>
+
+    <h2>Offerte Speciali</h2>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Inizio Offerta</th>
+                <th>Fine Offerta</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="offer : *{pizza.offers}">
+                <td>[[${offer.title}]]</td>
+                <td>[[${offer.startOffer}]]</td>
+                <td>[[${offer.endOffer}]]</td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
 </body>
 
 </html>
