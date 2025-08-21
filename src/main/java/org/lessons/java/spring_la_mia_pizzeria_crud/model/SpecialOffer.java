@@ -25,6 +25,10 @@ public class SpecialOffer {
     @NotNull(message = "The start offer date cannot be null")
     private LocalDate endOffer;
 
+    @NotNull(message = "The title date cannot be null")
+
+    private String title;
+
     @ManyToOne
     @JoinColumn(name = "pizza_id", nullable = false)
     private Pizza pizza;
@@ -61,6 +65,14 @@ public class SpecialOffer {
 
     public void setEndOffer(LocalDate endOffer) {
         this.endOffer = endOffer;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Pizza getPizza() {
