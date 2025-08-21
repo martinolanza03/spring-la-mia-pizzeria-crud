@@ -11,7 +11,8 @@
     <th:block>
         <div class="container mt-5">
             <h2>Crea una nuova offerta per [[${offer.getPizza().getName}]]</h2>
-            <form th:action="@{/offers/create}" th:object="${offer}" method="post" class="mt-4">
+            <form th:action="${edit} ? @{/offers/edit/{id}(id=${pizza.id})} : @{/offers/create}" th:object="${offer}"
+                method="post" class="mt-4">
                 <input type="hidden" th:field="*{pizza}">
                 <div class="mb-3">
                     <label for="title" class="form-label">Titolo offerta</label>
