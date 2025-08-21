@@ -63,4 +63,12 @@ public class SpecialOffer {
         this.endOffer = endOffer;
     }
 
+    public Pizza getPizza() {
+        return this.pizza;
+    }
+
+    public void setPizza(Pizza pizza) {
+        this.pizza = pizza;
+    }
+
 }
