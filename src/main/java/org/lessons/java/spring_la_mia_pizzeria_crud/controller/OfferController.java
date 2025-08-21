@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.validation.Valid;
@@ -26,6 +28,26 @@ public class OfferController {
             return "offers/create";
         }
 
+        repository.save(formOffer);
+
+        return "redirect:/pizze/" + formOffer.getPizza().getId();
+    }
+
+    @GetMapping("/{id}/edit")
+    public String edit(@PathVariable Integer id,
+            Model model) {
+        model.addAttribute("offer", repository.findById(id).get());
+
+        model.addAttribute("edit", true);
+        return "offer/create-or-edit";
+    }
+
+    @PostMapping("/{id}/edit")
+    public String update(@Valid @ModelAttribute("offer") SpecialOffer formOffer, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "offer/create-or-edit";
+        }
         repository.save(formOffer);
 
         return "redirect:/pizze/" + formOffer.getPizza().getId();

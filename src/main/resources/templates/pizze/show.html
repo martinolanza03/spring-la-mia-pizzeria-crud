@@ -37,6 +37,7 @@
                 <th>Nome</th>
                 <th>Inizio Offerta</th>
                 <th>Fine Offerta</th>
+                <th>Offerta</th>
             </tr>
         </thead>
         <tbody>
@@ -44,6 +45,7 @@
                 <td>[[${offer.title}]]</td>
                 <td>[[${offer.startOffer}]]</td>
                 <td>[[${offer.endOffer}]]</td>
+                <td><a th:href="@{/offers/{id}/edit(id=${offer.id})}">Modifica Offerta</a></td>
             </tr>
         </tbody>
 
