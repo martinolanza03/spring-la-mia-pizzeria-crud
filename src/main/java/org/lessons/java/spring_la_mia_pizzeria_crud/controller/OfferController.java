@@ -18,7 +18,7 @@ public class OfferController {
     private OfferRepository repository;
 
     @PostMapping("/create")
-    public String store(@Valid @ModelAttribute("offers") SpecialOffer formOffer, BindingResult bindingResult,
+    public String store(@Valid @ModelAttribute("offer") SpecialOffer formOffer, BindingResult bindingResult,
             Model model) {
 
         if (bindingResult.hasErrors()) {
