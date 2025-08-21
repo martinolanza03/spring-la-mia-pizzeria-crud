@@ -33,7 +33,7 @@ public class PizzaController {
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") Integer id, Model model) {
-        model.addAttribute("pizze", repository.findById(id).get());
+        model.addAttribute("pizza", repository.findById(id).get());
         return "pizze/show";
     }
 
