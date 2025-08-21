@@ -32,7 +32,7 @@ public class Pizza {
     private Integer price;
 
     @OneToMany(mappedBy = "pizza")
-    private List<SpecialOffer> offer;
+    private List<SpecialOffer> offers;
 
     public Pizza() {
     }
