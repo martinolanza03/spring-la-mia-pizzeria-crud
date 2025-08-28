@@ -21,6 +21,15 @@
                     </ul>
                 </div>
             </div>
+
+            <div class="mb-3">
+                <div th:each="ingredient : ${ingredients}">
+                    <input type="checkbox" th:field="*{ingredients}" th:id="|ingredient-${ingredient.id} |"
+                        th:errorClass="is-invalid" th:value="${ingredient.id}" />
+                    <label th:for="|ingredient-${ingredient.id} |" th:text="${ingredient.name}" />
+                </div>
+            </div>
+
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
                 <textarea th:field="*{description}" class="form-control" id="description" rows="3"
