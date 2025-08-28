@@ -21,7 +21,7 @@ public class Ingredient {
     @NotBlank(message = "The name must not be null, nor empty or blank")
     private String name;
 
-    private String descritpion;
+    private String description;
 
     @ManyToMany(mappedBy = "ingredients")
     private List<Pizza> pizze;
@@ -29,10 +29,11 @@ public class Ingredient {
     public Ingredient() {
     }
 
-    public Ingredient(Integer id, String name, String descritpion) {
+    public Ingredient(Integer id, String name, String description, List<Pizza> pizze) {
         this.id = id;
         this.name = name;
-        this.descritpion = descritpion;
+        this.description = description;
+        this.pizze = pizze;
     }
 
     public Integer getId() {
@@ -51,12 +52,20 @@ public class Ingredient {
         this.name = name;
     }
 
-    public String getDescritpion() {
-        return this.descritpion;
+    public String getDescription() {
+        return this.description;
     }
 
-    public void setDescritpion(String descritpion) {
-        this.descritpion = descritpion;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Pizza> getPizze() {
+        return this.pizze;
+    }
+
+    public void setPizze(List<Pizza> pizze) {
+        this.pizze = pizze;
     }
 
     @Override
@@ -64,7 +73,8 @@ public class Ingredient {
         return "{" +
                 " id='" + getId() + "'" +
                 ", name='" + getName() + "'" +
-                ", descritpion='" + getDescritpion() + "'" +
+                ", description='" + getDescription() + "'" +
+                ", pizze='" + getPizze() + "'" +
                 "}";
     }
 
