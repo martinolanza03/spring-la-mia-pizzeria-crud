@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Pizze List</title>
+    <title>Lista Ingredienti</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 
@@ -12,26 +12,35 @@
     <h2>
         <a th:href="@{/ingredient/create}">Crea Ingrediente</a>
     </h2>
+
     <table th:if="${ingredients.size() > 0}">
         <thead>
             <tr>
                 <th>Nome</th>
                 <th>Descrizione</th>
-                <th>Numero di ingredienti </th>
-                <th>Opzioni Ingredienti</th>
+                <th>Numero di pizze</th>
+                <th>Opzioni</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="ingredient : ${ingredients}" th:object="${ingredients}">
+            <tr th:each="ingredient : ${ingredients}" th:object="${ingredient}">
                 <td>[[*{name}]]</td>
                 <td>[[*{description}]]</td>
-                <td>[[*{ingredient.size()}]]</td>
-                <td> <a th:href="@{/ingredient/{id}(id=${pizza.id})}">Dettagli</a></td>
-        </tbody>
+                <td>[[*{pizze.size()}]]</td>
+                <td>
+                    <a th:href="@{/ingredient/{id}(id=*{id})}">Dettagli</a>
+                    <a th:href="@{/ingredient/{id}/edit(id=*{id})}">Modifica</a>
+                    <form action="#" th:action="@{/ingredient/delete/{id}(id=*{id})}" method="post">
+                        <button type="submit"> Elimina Ingrediente</button>
+                    </form>
 
+                </td>
+            </tr>
+        </tbody>
     </table>
+
     <div th:unless="${ingredients.size() > 0}">
-        <p>No Ingredients aviable</p>
+        <p>No Ingredients available</p>
     </div>
 </body>
 
