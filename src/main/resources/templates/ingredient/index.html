@@ -9,17 +9,24 @@
 
 <body>
     <h1>Lista degli ingredienti</h1>
+    <h2>
+        <a th:href="@{/ingredient/create}">Crea Ingrediente</a>
+    </h2>
     <table th:if="${ingredients.size() > 0}">
         <thead>
             <tr>
                 <th>Nome</th>
                 <th>Descrizione</th>
+                <th>Numero di ingredienti </th>
+                <th>Opzioni Ingredienti</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="ingredient : ${ingredients}" th:object="${ingredients}">
                 <td>[[*{name}]]</td>
                 <td>[[*{description}]]</td>
+                <td>[[*{ingredient.size()}]]</td>
+                <td> <a th:href="@{/ingredient/{id}(id=${pizza.id})}">Dettagli</a></td>
         </tbody>
 
     </table>
