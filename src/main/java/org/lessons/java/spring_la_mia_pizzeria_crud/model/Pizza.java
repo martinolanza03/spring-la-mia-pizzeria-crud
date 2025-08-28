@@ -6,6 +6,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
@@ -31,8 +34,12 @@ public class Pizza {
     @NotNull(message = "The name must not be null, min value 1")
     private Integer price;
 
-    @OneToMany(mappedBy = "pizza")
+    @OneToMany
     private List<SpecialOffer> offers;
+
+    @ManyToMany
+    @JoinTable(name = "ingredient_pizza", joinColumns = @JoinColumn(name = "pizza_id"), inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
+    private List<Ingredient> ingredients;
 
     public List<SpecialOffer> getOffers() {
         return this.offers;

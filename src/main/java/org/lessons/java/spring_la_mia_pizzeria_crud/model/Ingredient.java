@@ -1,14 +1,17 @@
 package org.lessons.java.spring_la_mia_pizzeria_crud.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "ingridients")
+@Table(name = "ingredient")
 public class Ingredient {
 
     @Id
@@ -19,6 +22,9 @@ public class Ingredient {
     private String name;
 
     private String descritpion;
+
+    @ManyToMany(mappedBy = "ingredients")
+    private List<Pizza> pizze;
 
     public Ingredient() {
     }
